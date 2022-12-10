@@ -31,10 +31,6 @@
         <li><a href="/pages/additionalInfo.html">Additional Info</a></li>
       </ul>
       <ul id="dropdown2" class="dropdown-content">
-        <li><a href="/pages/profile.html">Profile</a></li>
-        <li class="divider"></li>
-        <li><a href="/pages/settings.html">Settings</a></li>
-        <li class="divider"></li>
         <li><a href="#!">Logout</a></li>
       </ul>
       <nav>
@@ -63,7 +59,7 @@
           </div>
       <form action="#">
         <p class="range-field">
-          <input type="range" id="test5" min="0" max="12" />
+          <input type="range" name = "hours" id="test5" min="0" max="12" />
         </p>
       </form>
       <div class="timeStamp">
@@ -71,21 +67,21 @@
         </div>
     <form action="#">
       <p class="range-field">
-        <input type="range" id="test5" min="0" max="59" />
+        <input type="range" name = "minutes" id="test5" min="0" max="59" />
       </p>
     </form>
     <div class="timeStamp">
       Click below and select a date
     </div>
     <div class="range-field">
-      <input type="text" class="datepicker"></input>
+      <input type="text" name = "date" class="datepicker"></input>
     </div>
     <div class="timeStamp">Did you wake up in the night?</div>
     <div class="range-field">
       <select>
         <option value="" disabled selected>Choose your option</option>
-        <option value="1">Yes</option>
-        <option value="2">No</option>
+        <option name = "answer" value="1">Yes</option>
+        <option name = "answer" value="2">No</option>
       </select>
       </div>
     </div>

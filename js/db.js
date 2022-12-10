@@ -1,7 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
-import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, query, where, updateDoc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import { initializeFirestore, CACHE_SIZE_UNLIMITED, enableIndexedDBPersistence, onSnapshot, getFirestore, collection, getDocs, addDoc, doc, deleteDoc, query, where, updateDoc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,73 +22,60 @@ import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, query, where
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-    async function getMovies(db){
-    const movieCol = collection(db, "Movies");
-    const movieSnap = await getDocs(movieCol);
-    const movieList = movieSnap.docs.map((doc) => doc.data());
-    return movieList;
-}
-const movieList = document.querySelector('#movie-list');
-    const form = document.querySelector('#add-movie')
+  const db = getAnalytics(app);
 
-    function renderMovies(dc) {
-        let li = document.createElement("li");
-        let movie = document.createElement("span");
-        let rating = document.createElement("span");
-        let cross = document.createElement('div');
+  async function getPrompts(db) {
+    const promptCol = collection(db, "prompts");
+    const promptSnap = await getDocs(promptCol);
+    const promptList = promptSnap.docs.map((doc) => doc);
+    return promptList;
+  }
+ 
 
-        li.setAttribute('data-id', dc.id);
-        movie.textContent = dc.data().movie;
-        rating.textContent = dc.data().rating;
-        cross.textContent = 'x';
-
-        li.appendChild(movie);
-        li.appendChild(rating);
-        li.appendChild(cross);
-
-        movieList.appendChild(li);
-
-        cross.addEventListener('click', (e) => {
-            e.stopPropagation();
-            let id = e.target.parentElement.getAttribute('data-id');
-            deleteDoc(doc(db, "movie", id))
-        })
+enableIndexedDBPersistence(db)
+  .catch((err) => {
+      if (err.code == 'failed-precondition') {
+ 
+      } else if (err.code == 'unimplemented') {
     }
+  });
 
-    const movie = getDocs(collection(db, "Movies")).then((snapshot) => {
-        snapshot.forEach((doc) => {
-            renderMovies(doc)
-        })
-    })
+  const firestoreDb = initializeFirestore(app, {
+    cacheSizeBytes: CACHE_SIZE_UNLIMITED
+  });
+  
+  const q = query(collection(db, "cities"), where("state", "==", "CA"));
 
-    const q = query(collection(db, "Movies"), where("movie", "==", "rating"));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        console.log(doc.id, "=>", doc.data())
-    })
-
-    const upDoc = doc(db, "Movies", "J9xsnnSRvrwO6KBy1aKd");
-
-    updateDoc(upDoc, {
-        name: "Gladiator"
-    })
-
-    form.addEventListener(('submit'), (e) => {
-        e.preventDefault();
-        const docRef = addDoc(collection(db, "Movies"), {
-            movie: form.movie.value,
-            rating: form.rating.value
-        })
-    })
-
-    const set = document.querySelector("set");
-    set.addEventListener("submit", (event) => {
-        event.preventDefault();
-        addDoc(collection(db, "docs"), {
-            title: set.title.value,
-            description: set.description.value,
-        }).catch((error) => console.log(error));
-        set.title.value = "";
-        set.description.value = "";
+onSnapshot(q, { includeMetadataChanges: true }, (snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+        if (change.type === "added") {
+            console.log("New city: ", change.doc.data());
+        }
+        const source = snapshot.metadata.fromCache ? "local cache" : "server";
+        console.log("Data came from " + source);
     });
+});
+
+  const form = document.querySelector("form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    addDoc(collection(db, "prompts"), {
+      hours: form.hours.value,
+      minutes: form.minutes.value,
+      date: form.date.value,
+      answer: form.answer.value
+    }).catch((error) => console.log(error));
+      form.hours.value = "";
+      form.minutes.value = "";
+      form.date.value = "";
+      form.answer.value = "";
+    });
+
+    const promptContainer = document.querySelector("prompts");
+    promptContainer.addEventListener("click", (e) => {
+      if(e.target.tagName === "I") {
+        const id = e.target.getAttribute("data-id");
+        deleteDoc(doc(db, "prompts", id));
+      }
+    })
