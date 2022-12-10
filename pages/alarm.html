@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+  <html>
+
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="maifest" href="/manifest.json">
+      <link rel="stylesheet" href="/css/index.css">
+
+    </head>
+
+<body>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/index.html">Home</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/alarm.html">Alarm</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/noise.html">Noise</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/statistics.html">Statistics</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/additionalInfo.html">Additional Info</a></li>
+      </ul>
+      <ul id="dropdown2" class="dropdown-content">
+        <li><a href="/pages/profile.html">Profile</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/settings.html">Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Logout</a></li>
+      </ul>
+      <nav>
+        <div class="nav-wrapper">
+          <ul class="left hide-on-med-and-down">
+            <a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="large material-icons">more_vert</i></a>
+          </ul>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><i class="large material-icons">account_circle</i></a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="header">
+        Select a time for your alarm to activate
+      </div>
+      <div class="container">
+        <img class="img" src="/images/clock.png"></img>
+      </div>
+      <div class="timeStamp">
+          Hours
+          </div>
+      <form action="#">
+        <p class="range-field">
+          <input type="range" id="test5" min="0" max="12" />
+        </p>
+      </form>
+      <div class="timeStamp">
+        Minutes
+        </div>
+    <form action="#">
+      <p class="range-field">
+        <input type="range" id="test5" min="0" max="59" />
+      </p>
+    </form>
+    <div class="input-field col s12">
+      <div class="range-field">
+        <div class="timeStamp">AM/PM</div>
+      <select>
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">AM</option>
+        <option value="2">PM</option>
+      </select>
+      </div>
+    </div>
+    <!-- Dropdown Trigger -->
+    <div class="timeStamp">
+      Select what sound you prefer
+    <div class="range-field">
+  <a class='dropdown-trigger btn' href='#' data-target='dropdown3'>Sound</a>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown3' class='dropdown-content'>
+    <li><a href="#!">one</a></li>
+    <li><a href="#!">two</a></li>
+    <li><a href="#!">three</a></li>
+    <li><a href="#!">four</a></li>
+    <li><a href="#!">five</a></li>
+  </ul>
+  </div>
+  </div>
+  <div class="container">
+  <button class="button">Submit</button>
+  </div>
+
+      <script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+      <script>
+        $(document).ready(function () {
+          $(".dropdown-trigger").dropdown();
+        })        
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems, options);
+      });
+    
+      // Or with jQuery
+    
+      $(document).ready(function(){
+        $('select').formSelect();
+      });
+      </script>
+      <script src="/js/app.js"></script>
+      <script type="module" src="/js/db.js"></script>
+
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+</body>
+</html>

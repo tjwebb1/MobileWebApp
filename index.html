@@ -12,73 +12,36 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-      <style>
-        *
-        {
-          margin: 0;
-          padding: 0;
-        }
-        .nav-wrapper {
-          background-color: rgb(196, 202, 238);
-        }
-        body {
-          background: linear-gradient(black,blue);
-          min-height: 100vh;
-        }
-        .material-icons {
-          color: black;
-          font-size: 50px;
-        }
-        .card {
-          height: 300px;
-          width: 800px;
-          align-content: center;
-          top: 50px;
-          margin-left: auto;
-          margin-right: auto;
-          border-radius: 10%;
-        }
-        .card-content {
-          font-size: larger;
-          text-align: center;
-          margin: auto;
-          vertical-align: center;
-        }
-        .chart-stats {
-          font-size: medium;
-          text-align: center;
-          padding: 100px;
-          vertical-align: center;
-          color: white;
-        }
-      </style>
+      <link rel="maifest" href="/manifest.json">
+      <link rel="stylesheet" href="/css/index.css">
 
     </head>
 
 
     <body>
       <!-- Dropdown Structure -->
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">Alarm</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">Noise</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">Statistics</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">Additional Info</a></li>
-</ul>
-<ul id="dropdown2" class="dropdown-content">
-  <li><a href="#!">Profile</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">Settings</a></li>
-  <li class="divider"></li>
-  <li><a href="#!">Logout</a></li>
-</ul>
+      <ul id="dropdown1" class="dropdown-content">
+        <li><a href="/index.html">Home</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/alarm.html">Alarm</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/noise.html">Noise</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/statistics.html">Statistics</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/additionalInfo.html">Additional Info</a></li>
+      </ul>
+      <ul id="dropdown2" class="dropdown-content">
+        <li><a href="/pages/profile.html">Profile</a></li>
+        <li class="divider"></li>
+        <li><a href="/pages/settings.html">Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">Logout</a></li>
+      </ul>
 <nav>
   <div class="nav-wrapper">
     <ul class="left hide-on-med-and-down">
-      <a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="large material-icons">more_vert</i></a>\App.html
+      <a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="large material-icons">more_vert</i></a>
     </ul>
     <ul class="right hide-on-med-and-down">
       <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><i class="large material-icons">account_circle</i></a></li>
@@ -87,11 +50,13 @@
 </nav>
 <div class="carousel carousel-slider">
   <a class="carousel-item" href="#one!">
+    <div class="container">
       <div class="card">
           <div class="card-content">
             <h2>Here is Reccomendation 1. This will be based off information put in by the user to recommend what to do to get the best nights sleep.</h2>
           </div>
       </div>
+    </div>
   </a>
   <a class="carousel-item" href="#two!"><div class="card">
     <div class="card-content">
@@ -133,6 +98,8 @@
         })
       })
       </script>
+      <script src="/js/app.js"></script>
+      <script type="module" src="/js/db.js"></script>
 
       <!--JavaScript at end of body for optimized loading-->
       <script type="text/javascript" src="js/materialize.min.js"></script>

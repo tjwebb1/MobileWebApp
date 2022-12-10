@@ -1,0 +1,16 @@
+{
+    "name": "Sleep Aid",
+    "short_name": "Sleep",
+    "description": "Help for a better nights rest",
+    "start_url": "/app.html",
+    "scope": ".",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "black and Blue",
+    "lang": "en-US",
+    "icons": [
+        {
+            
+        }
+    ]
+}

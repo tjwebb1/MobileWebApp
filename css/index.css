@@ -1,0 +1,95 @@
+*
+        {
+          margin: 0;
+          padding: 0;
+        }
+        .nav-wrapper {
+          background-color: rgb(196, 202, 238);
+          width:100%;
+        }
+        body {
+          background: linear-gradient(black,blue);
+          min-height: 100vh;
+        }
+        .material-icons {
+          color: black;
+          font-size: 50px;
+        }
+        .range-field {
+          width: 20%;
+          margin-top: 0px;
+          justify-content: center;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .button {
+          margin-top: 20px;
+          width: 100px;
+          height: 50px;
+          justify-content: center;
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .img {
+          max-height: 200px;
+          max-width: 400px;
+          position: relative;
+          margin: auto;
+          margin-top: 20px;
+          border-radius: 15%;
+        }
+        .timeStamp {
+          text-align: center;
+            justify-content: center;
+            align-items: center;
+            vertical-align: center;
+            font-size: 30px;
+            font: bold;
+            color: white;
+            margin-top: 20px;
+        }
+        .header {
+          text-align: center;
+            justify-content: center;
+            align-items: center;
+            vertical-align: center;
+            font-size: 60px;
+            margin-bottom: 30px;
+            font: bold;
+            color: white;
+            margin-top: 20px;
+            border-bottom: black solid;
+        }
+        .datepicker {
+          color: white;
+        }
+        .container {
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            vertical-align: center;
+        }
+        .card {
+          height: 50%;
+          width: 50%;
+          position: relative;
+          margin: auto;
+          margin-top: 50px;
+          border-radius: 15%;
+        }
+        .card-content {
+            text-overflow: ellipsis;
+          font-size: 50%;
+          text-align: center;
+          margin: auto;
+          vertical-align: center;
+        }
+        .chart-stats {
+          font-size: medium;
+          text-align: center;
+          padding: 100px;
+          vertical-align: center;
+          color: white;
+        }
